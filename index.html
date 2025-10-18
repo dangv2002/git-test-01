@@ -1,46 +1,344 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Báo Mới 24H - Trang chủ</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+      }
+
+      body {
+        background-color: #f8f9fa;
+        color: #333;
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+      }
+
+      .logo {
+        font-size: 26px;
+        font-weight: bold;
+        color: #d32f2f;
+      }
+
+      nav a {
+        text-decoration: none;
+        margin: 0 15px;
+        color: #555;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: #d32f2f;
+      }
+
+      /* ===== BANNER ===== */
+      .banner {
+        max-width: 1200px;
+        margin: 30px auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        padding: 0 20px;
+      }
+
+      .main-banner {
+        position: relative;
+      }
+
+      .main-banner img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+
+      .banner-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        color: white;
+        border-radius: 0 0 12px 12px;
+      }
+
+      .banner-text h2 {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      .side-banner {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .side-item {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .side-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .side-item img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+
+      .side-item h3 {
+        font-size: 16px;
+        padding: 10px;
+      }
+
+      /* ===== NEWS SECTION ===== */
+      .news-section {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 0 20px;
+      }
+
+      .news-section h2 {
+        border-left: 5px solid #d32f2f;
+        padding-left: 10px;
+        font-size: 22px;
+        margin-bottom: 20px;
+      }
+
+      .news-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .news-card {
+        background-color: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .news-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .news-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .news-card .content {
+        padding: 15px;
+      }
+
+      .news-card h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+
+      .news-card p {
+        font-size: 14px;
+        color: #666;
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background-color: #1f1f1f;
+        color: #ccc;
+        padding: 40px 20px;
+        margin-top: 50px;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .footer-container h3 {
+        color: #fff;
+        margin-bottom: 10px;
+      }
+
+      .footer-container ul {
+        list-style: none;
+      }
+
+      .footer-container ul li a {
+        text-decoration: none;
+        color: #ccc;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .footer-container ul li a:hover {
+        color: #fff;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 13px;
+        color: #777;
+        border-top: 1px solid #333;
+        padding-top: 15px;
+      }
+
+      @media (max-width: 768px) {
+        .banner {
+          grid-template-columns: 1fr;
         }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
+
+        nav {
+          display: none;
         }
-        main {
-            padding: 2rem;
-            text-align: center;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
+    <!-- Header -->
     <header>
-        <h1>Welcome to My Website</h1>
+      <div class="header-container">
+        <div class="logo">Báo Mới 24H</div>
+        <nav>
+          <a href="index.html">Trang chủ</a>
+          <a href="#">Thời sự</a>
+          <a href="#">Kinh tế</a>
+          <a href="#">Thể thao</a>
+          <a href="#">Giải trí</a>
+          <a href="about.html">About Me</a>
+        </nav>
+      </div>
     </header>
-    <main>
-        <p>This is the home page of your website. Feel free to explore and customize it!</p>
-    </main>
+
+    <!-- Banner -->
+    <section class="banner">
+      <div class="main-banner">
+        <img
+          src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=60"
+          alt="Tin nổi bật"
+        />
+        <div class="banner-text">
+          <h2>Việt Nam giành huy chương vàng SEA Games 2025</h2>
+          <p>Tin thể thao: Tuyển Việt Nam đánh bại Thái Lan trong trận chung kết.</p>
+        </div>
+      </div>
+      <div class="side-banner">
+        <div class="side-item">
+          <img
+            src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=60"
+            alt="Kinh tế"
+          />
+          <h3>Kinh tế Việt Nam phục hồi mạnh mẽ sau đại dịch</h3>
+        </div>
+        <div class="side-item">
+          <img
+            src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=800&q=60"
+            alt="Công nghệ"
+          />
+          <h3>Apple ra mắt iPhone 17 với nhiều tính năng đột phá</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+      <h2>Tin mới nhất</h2>
+      <div class="news-grid">
+        <div class="news-card">
+          <img
+            src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=60"
+            alt="Giao thông"
+          />
+          <div class="content">
+            <h3>Hà Nội khai trương tuyến tàu điện ngầm đầu tiên</h3>
+            <p>Tuyến metro giúp giảm ùn tắc và hiện đại hóa giao thông đô thị.</p>
+          </div>
+        </div>
+        <div class="news-card">
+          <img
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=60"
+            alt="Du lịch"
+          />
+          <div class="content">
+            <h3>Du lịch biển miền Trung thu hút hàng triệu du khách</h3>
+            <p>Các bãi biển Đà Nẵng, Nha Trang, Quy Nhơn sôi động trở lại.</p>
+          </div>
+        </div>
+        <div class="news-card">
+          <img
+            src="https://images.unsplash.com/photo-1573164574472-797cdf4a5831?auto=format&fit=crop&w=800&q=60"
+            alt="Startup"
+          />
+          <div class="content">
+            <h3>Startup Việt gọi vốn thành công 10 triệu USD</h3>
+            <p>Dự án công nghệ xanh nhận được đầu tư từ quỹ Nhật Bản.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2023 Your Website. All rights reserved.</p>
+      <div class="footer-container">
+        <div>
+          <h3>Báo Mới 24H</h3>
+          <p>
+            Cập nhật tin tức nhanh chóng, chính xác và đa chiều 24 giờ mỗi ngày.
+          </p>
+        </div>
+        <div>
+          <h3>Danh mục</h3>
+          <ul>
+            <li><a href="#">Thời sự</a></li>
+            <li><a href="#">Kinh tế</a></li>
+            <li><a href="#">Giải trí</a></li>
+            <li><a href="#">Thể thao</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Liên hệ</h3>
+          <p>Email: lienhe@baomoi24h.vn</p>
+          <p>Hotline: 0123 456 789</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 Báo Mới 24H. All rights reserved.
+      </div>
     </footer>
-</body>
+  </body>
 </html>
