@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tin tức Thể Thao</title>
+    <meta name="description" content="Trang tin tức thể thao: bóng đá, bóng rổ, quần vợt, thể thao điện tử và sức khỏe." />
+    <style>
+        :root{
+            --bg:#f7f7f8;
+            --card:#fff;
+            --muted:#6b7280;
+            --accent:#0b66ff;
+            --maxw:1100px;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+        *{box-sizing:border-box}
+        body{margin:0;background:var(--bg);color:#111;line-height:1.45}
+        .container{max-width:var(--maxw);margin:24px auto;padding:16px}
+        header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+        .brand{display:flex;align-items:center;gap:12px}
+        .logo{width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#7ad1ff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
+        h1{font-size:20px;margin:0}
+        nav{display:flex;gap:12px;flex-wrap:wrap}
+        nav a{color:var(--muted);text-decoration:none;font-size:14px;padding:8px;border-radius:6px}
+        nav a:hover{background:#e9eefb;color:var(--accent)}
+        .searchbar{display:flex;gap:8px;align-items:center}
+        .searchbar input{padding:8px 12px;border:1px solid #ddd;border-radius:8px;width:220px}
+        .layout{display:grid;grid-template-columns:1fr 300px;gap:18px}
+        @media (max-width:880px){.layout{grid-template-columns:1fr}.searchbar input{width:140px}}
+        .hero{display:flex;gap:16px;background:linear-gradient(180deg,#fff,#f8fbff);padding:16px;border-radius:12px;align-items:center}
+        .hero img{width:160px;height:100px;object-fit:cover;border-radius:8px}
+        .hero .meta{color:var(--muted);font-size:13px;margin-bottom:6px}
+        .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
+        @media (max-width:700px){.grid{grid-template-columns:1fr}}
+        .card{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+        .card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:8px}
+        .tag{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;background:#eef6ff;color:var(--accent);margin-right:8px}
+        .title{font-weight:600;margin:6px 0}
+        .excerpt{color:var(--muted);font-size:14px}
+        aside .card{position:sticky;top:18px}
+        .categories{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+        .cat{padding:8px 10px;background:#fff;border-radius:8px;border:1px solid #eee;font-size:14px;cursor:pointer}
+        .cat.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+        footer{margin-top:22px;color:var(--muted);font-size:13px;text-align:center}
+        .meta-row{display:flex;gap:12px;color:var(--muted);font-size:13px;margin-top:8px;align-items:center}
+        button{cursor:pointer;border:0;background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px}
+        .small{font-size:13px;color:var(--muted)}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="logo">TT</div>
+                <div>
+                    <h1>Tin Thể Thao</h1>
+                    <div class="small">Cập nhật nhanh, chính xác mọi diễn biến thể thao</div>
+                </div>
+            </div>
+
+            <div class="searchbar" role="search">
+                <input id="search" type="search" placeholder="Tìm bài viết, đội, vận động viên..." aria-label="Tìm kiếm" />
+                <button id="clear">Xoá</button>
+            </div>
+        </header>
+
+        <nav aria-label="Chuyên mục">
+            <a href="#" data-cat="tatca" class="cat-link active">Tất cả</a>
+            <a href="#" data-cat="bongda" class="cat-link">Bóng đá</a>
+            <a href="#" data-cat="bongro" class="cat-link">Bóng rổ</a>
+            <a href="#" data-cat="tennis" class="cat-link">Quần vợt</a>
+            <a href="#" data-cat="esports" class="cat-link">Esports</a>
+            <a href="#" data-cat="suckhoe" class="cat-link">Sức khỏe</a>
+        </nav>
+
+        <main class="layout" id="main">
+            <section>
+                <div class="hero card" aria-labelledby="hero-title">
+                    <img src="https://images.unsplash.com/photo-1508264165352-258859e62245?w=800" alt="Tin nổi bật" />
+                    <div>
+                        <div class="tag">Nổi bật</div>
+                        <h2 id="hero-title" style="margin:6px 0 4px">Đội tuyển Việt Nam giành chiến thắng trong trận giao hữu</h2>
+                        <div class="meta">20 giờ trước • Bình luận: 124</div>
+                        <p class="excerpt" style="margin-top:8px">Trận đấu giao hữu kết thúc với tỉ số 2-1, tạo tiền đề tích cực cho vòng loại sắp tới. HLV điều chỉnh đội hình nhằm thử nghiệm chiến thuật.</p>
+                    </div>
+                </div>
+
+                <div class="grid" id="articles">
+                    <article class="card" data-category="bongda">
+                        <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?w=800" alt="Bóng đá" />
+                        <div class="tag">Bóng đá</div>
+                        <div class="title">Vòng loại: Những điều cần biết trước trận gặp đối thủ mạnh</div>
+                        <div class="meta-row"><time datetime="2025-10-18">18/10/2025</time><span>•</span><span class="small">Phân tích chiến thuật</span></div>
+                        <p class="excerpt">Bài phân tích chiến thuật, điểm mạnh điểm yếu của hai đội, và dự đoán đội hình xuất phát.</p>
+                    </article>
+
+                    <article class="card" data-category="bongro">
+                        <img src="https://images.unsplash.com/photo-1504457048262-3d034a4b26d1?w=800" alt="Bóng rổ" />
+                        <div class="tag">Bóng rổ</div>
+                        <div class="title">Sao trẻ ghi 35 điểm, đội nhà lội ngược dòng ấn tượng</div>
+                        <div class="meta-row"><time datetime="2025-10-17">17/10/2025</time><span>•</span><span class="small">Highlights</span></div>
+                        <p class="excerpt">Diễn biến hiệp cuối đầy kịch tính và pha ném quyết định của sao trẻ giúp đội giành chiến thắng.</p>
+                    </article>
+
+                    <article class="card" data-category="tennis">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800" alt="Quần vợt" />
+                        <div class="tag">Quần vợt</div>
+                        <div class="title">Giải ATP: Hạt giống số 3 bất ngờ dừng bước</div>
+                        <div class="meta-row"><time datetime="2025-10-16">16/10/2025</time><span>•</span><span class="small">Tin nóng</span></div>
+                        <p class="excerpt">Một cú sốc ngay vòng 2 khi tay vợt chủ nhà thi đấu kém phong độ, mở ra cơ hội cho ứng viên khác.</p>
+                    </article>
+
+                    <article class="card" data-category="esports">
+                        <img src="https://images.unsplash.com/photo-1606112219348-204d7d8b94ee?w=800" alt="Esports" />
+                        <div class="tag">Esports</div>
+                        <div class="title">Giải đấu quốc tế: Đội Việt Nam tiến vào bán kết</div>
+                        <div class="meta-row"><time datetime="2025-10-15">15/10/2025</time><span>•</span><span class="small">Bản tin</span></div>
+                        <p class="excerpt">Chiến thuật linh hoạt và phối hợp tốt giúp đội tuyển vượt qua đối thủ đáng gờm.</p>
+                    </article>
+
+                    <article class="card" data-category="suckhoe">
+                        <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=800" alt="Sức khỏe" />
+                        <div class="tag">Sức khỏe</div>
+                        <div class="title">Chế độ phục hồi sau chấn thương: Lời khuyên từ chuyên gia</div>
+                        <div class="meta-row"><time datetime="2025-10-14">14/10/2025</time><span>•</span><span class="small">Tư vấn</span></div>
+                        <p class="excerpt">Các bước tập hồi phục, dinh dưỡng và nghỉ ngơi đúng cách giúp vận động viên trở lại nhanh hơn.</p>
+                    </article>
+
+                    <article class="card" data-category="bongda">
+                        <img src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=800" alt="Phân tích" />
+                        <div class="tag">Bóng đá</div>
+                        <div class="title">Chiến thuật pressing: Khi nào cần áp dụng?</div>
+                        <div class="meta-row"><time datetime="2025-10-13">13/10/2025</time><span>•</span><span class="small">Phân tích</span></div>
+                        <p class="excerpt">Phân tích thời điểm phù hợp để áp dụng pressing và những rủi ro kèm theo.</p>
+                    </article>
+                </div>
+            </section>
+
+            <aside>
+                <div class="card">
+                    <h3 style="margin:0 0 8px">Chuyên mục</h3>
+                    <div class="categories" id="categoryList">
+                        <button class="cat active" data-cat="tatca">Tất cả</button>
+                        <button class="cat" data-cat="bongda">Bóng đá</button>
+                        <button class="cat" data-cat="bongro">Bóng rổ</button>
+                        <button class="cat" data-cat="tennis">Quần vợt</button>
+                        <button class="cat" data-cat="esports">Esports</button>
+                        <button class="cat" data-cat="suckhoe">Sức khỏe</button>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:12px">
+                    <h4 style="margin:0 0 8px">Bài đọc nhiều</h4>
+                    <ol style="padding-left:18px;margin:0;color:var(--muted)">
+                        <li>Bàn thắng đẹp nhất tháng</li>
+                        <li>Top 10 pha cứu thua ấn tượng</li>
+                        <li>Hướng dẫn khởi động trước tập luyện</li>
+                    </ol>
+                </div>
+
+                <div class="card" style="margin-top:12px">
+                    <h4 style="margin:0 0 8px">Đăng ký nhận tin</h4>
+                    <p class="small">Nhận bản tin hàng tuần về các tin tức thể thao nổi bật.</p>
+                    <form id="subscribe" onsubmit="return false;">
+                        <input type="email" id="email" placeholder="Email của bạn" required style="width:100%;padding:8px;border:1px solid #eee;border-radius:8px;margin-bottom:8px" />
+                        <button type="submit" style="width:100%">Đăng ký</button>
+                    </form>
+                    <div id="submsg" class="small" style="margin-top:8px;color:green;display:none">Cảm ơn! Bạn đã đăng ký.</div>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            &copy; 2025 Tin Thể Thao — Cập nhật liên tục. | <span class="small">Website mẫu</span>
+        </footer>
+    </div>
+
+    <script>
+        const search = document.getElementById('search');
+        const clearBtn = document.getElementById('clear');
+        const articles = Array.from(document.querySelectorAll('#articles article'));
+        const catLinks = Array.from(document.querySelectorAll('.cat-link'));
+        const catButtons = Array.from(document.querySelectorAll('aside .cat'));
+        const subscribe = document.getElementById('subscribe');
+        const submsg = document.getElementById('submsg');
+
+        function filterArticles() {
+            const q = (search.value || '').trim().toLowerCase();
+            const activeCat = document.querySelector('.cat.active')?.dataset.cat || 'tatca';
+            articles.forEach(a=>{
+                const title = a.querySelector('.title').textContent.toLowerCase();
+                const excerpt = a.querySelector('.excerpt').textContent.toLowerCase();
+                const cat = a.dataset.category || 'tatca';
+                const matchQ = !q || title.includes(q) || excerpt.includes(q);
+                const matchCat = (activeCat === 'tatca') || (activeCat === cat);
+                a.style.display = (matchQ && matchCat) ? '' : 'none';
+            });
+        }
+
+        search.addEventListener('input', filterArticles);
+        clearBtn.addEventListener('click', ()=>{ search.value=''; filterArticles(); });
+
+        catLinks.forEach(link=>{
+            link.addEventListener('click', e=>{
+                e.preventDefault();
+                catLinks.forEach(l=>l.classList.remove('active'));
+                link.classList.add('active');
+                const cat = link.dataset.cat;
+                catButtons.forEach(b=>b.classList.toggle('active', b.dataset.cat === cat));
+                filterArticles();
+            });
+        });
+
+        catButtons.forEach(btn=>{
+            btn.addEventListener('click', ()=>{
+                catButtons.forEach(b=>b.classList.remove('active'));
+                btn.classList.add('active');
+                catLinks.forEach(l=>l.classList.toggle('active', l.dataset.cat === btn.dataset.cat));
+                filterArticles();
+            });
+        });
+
+        subscribe.addEventListener('submit', ()=>{
+            submsg.style.display='block';
+            setTimeout(()=>submsg.style.display='none', 3000);
+            subscribe.reset();
+        });
+
+        filterArticles();
+    </script>
+</body>
+</html>
